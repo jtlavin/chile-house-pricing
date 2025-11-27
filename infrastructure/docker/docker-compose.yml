@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Data Pipeline Service
+  scraper:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/Dockerfile.scraper
+    container_name: house-pricing-scraper
+    volumes:
+      - ../../ml/data:/app/ml/data
+      - ../../data-pipeline:/app/data-pipeline
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Uncomment to run as a scheduled job
+    # command: python -m data-pipeline.jobs.scrape_job --demo
+
+  # API Service
+  api:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/Dockerfile.api
+    container_name: house-pricing-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../../api:/app/api
+      - ../../ml/models:/app/ml/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: uvicorn api.app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Future: Add ML training service
+  # ml-training:
+  #   build:
+  #     context: ../../
+  #     dockerfile: infrastructure/docker/Dockerfile.ml
+  #   container_name: house-pricing-ml
+  #   volumes:
+  #     - ../../ml:/app/ml

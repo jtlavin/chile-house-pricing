@@ -1,0 +1,93 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Data (keep structure, ignore large files)
+ml/data/raw/*.json
+ml/data/raw/*.db
+ml/data/processed/
+ml/data/splits/
+*.csv
+*.parquet
+
+# Models
+ml/models/*.pkl
+ml/models/*.joblib
+ml/models/*.h5
+ml/experiments/
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+debug_*.html
+*.tmp
+
+# Environment variables
+.env
+.env.local
+
+# Docker
+*.dockerignore
+
+# DVC (if you add it later)
+.dvc/
+*.dvc
+
+# Keep directory structure with .gitkeep files
+!ml/data/raw/.gitkeep
+!ml/data/processed/.gitkeep
+!ml/data/splits/.gitkeep
+!ml/experiments/.gitkeep
+!ml/models/.gitkeep
